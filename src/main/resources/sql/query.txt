@@ -1,0 +1,8 @@
+Description: Write a query and compute average salary (sal) of employees distributed by location (loc). Output shouldn't show any locations which don't have any employees.
+Query:select dept.loc, avg(emp.sal) from emp, dept  where emp.deptno = dept.deptno group by dept.loc
+Description: Write a query and compute average salary (sal) of employees located in NEW YORK excluding PRESIDENT
+Query:select avg(emp.sal) from emp, dept  where emp.deptno = dept.deptno and dept.loc = 'NEW YORK' and emp.job <> 'PRESIDENT' group by dept.loc
+Description: Write a query and compute average salary (sal) of four most recently hired employees
+Query:select avg(emp.sal) from emp where emp.empno in (select e1.empno from emp e1 order by e1.hiredate desc limit 4)
+Description: Write a query and compute minimum salary paid for different kinds of jobs in DALLAS
+Query:select emp.job, min(emp.sal) from emp, dept where emp.deptno = dept.deptno and dept.loc = 'DALLAS' group by emp.job
